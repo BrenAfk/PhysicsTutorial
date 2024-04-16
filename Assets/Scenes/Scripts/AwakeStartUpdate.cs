@@ -6,32 +6,38 @@ public class AwakeStartUpdate : MonoBehaviour
 {
     private void Awake()
     {
-        //Debug.Log("this will be called first");
+        Debug.Log("Awake: this is called at the very beginning");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("this will be called after Awake");
-
-
-
-        numberOne = 10;
-
-        anObject.Translate(Vector3.forward * numberOne);
+        Debug.Log("Start: this is called after awake");
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("this will be called again and again");
+        //Debug.Log("Update: this is called again and again");
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            cube.SetActive(true);
+        }
 
-        
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            cube.SetActive(false);
+        }
+
+        // reset ball position to the default position
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            ballTransform.position = ballDefaultPosition;
+        }
     }
 
-    public Transform anObject;
-    public Transform Cube2;
+    public GameObject cube;
+    public Transform ballTransform;
 
-    public int numberOne;
-    public int numberTwo;
+    public Vector3 ballDefaultPosition;
 }
